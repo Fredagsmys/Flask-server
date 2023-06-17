@@ -5,7 +5,7 @@ from mysql.connector import Error
 import datetime
 
 app = Flask(__name__)
-water_status = False
+water_status = "0"
 
 @app.route("/")
 def hello_world():
@@ -13,15 +13,22 @@ def hello_world():
 
 @app.get("/get_water_status")
 def get_water_status():
-    if water_status:
-        return "1"
-    else:
+    if water_status == "0":
         return "0"
+    else:
+        water_status = "0"
+        return "1"
+    
+@app.post("/set_water_status")
+def set_water_status():
+    water_status = "1"
+    return "success"
+
+
 
 @app.post("/send_data")
 def recv_data():
     status = 0
-    print(request.is_json)
     
     req = request.get_json()
     print(req)

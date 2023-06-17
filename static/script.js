@@ -2,6 +2,7 @@ const sendButton = document.querySelector("#send-button");
 const dataField = document.querySelector("#data-field");
 const typeField = document.querySelector("#type-field");
 const idField = document.querySelector("#id-field");
+const waterButton = document.querySelector("#water-button");
 var ctx = document.getElementById("ctx").getContext("2d");
 
 const getButton = document.querySelector("#get-button");
@@ -9,12 +10,23 @@ const dataList = document.querySelector("#data-list")
 
 sendButton.addEventListener("click", sendData);
 getButton.addEventListener("click", getData);
-
+waterButton.addEventListener("click",sendWaterCommand);
 var timeFormat = 'moment.ISO_8601';
 var lineChart = document.getElementById('ctx').getContext('2d');
 
 getData();
 
+
+function sendWaterCommand(){
+    var xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+        if (xhr.responseText == "success"){
+            alert("Water command sent successfully");
+        }
+    }
+    xhr.open("GET", "/set_water_status");
+    xhr.send();
+}
 
 
 function getData() {
