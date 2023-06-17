@@ -33,8 +33,8 @@ def recv_data():
     if request.method == 'POST':
         
         status = 0
-        req = request.get_json()
-        jsonmsg = json.loads(req)
+        jsonmsg = request.get_json()
+        # jsonmsg = json.loads(req)
         value = jsonmsg["value"]
         sensorType = jsonmsg["sensorType"]
         sensorID = jsonmsg["sensorID"]
