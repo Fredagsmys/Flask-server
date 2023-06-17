@@ -46,6 +46,7 @@ function getData() {
             li.innerHTML = JSON.stringify(item)
             dataList.appendChild(li)
             })
+            Array.from(dataList.children).reverse().forEach(element =>dataList.appendChild(element));
         // new Chart('ctx', {
         //     type: 'line',
         //     data: {
