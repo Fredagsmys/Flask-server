@@ -33,7 +33,7 @@ def recv_data():
     if request.method == 'POST':
         
         status = 0
-        print(request.json)
+        print("json parsed message: " + request.json)
         req = request.get_json()
         jsonmsg = json.loads(req)
         value = jsonmsg["value"]
