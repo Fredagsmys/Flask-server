@@ -38,37 +38,37 @@ function getData() {
         dataList.innerHTML = ""
         var myData = [];
         response.forEach( (item,index) => {
-            console.log()
-            if (item["sensorID"] == 2){
-            myData.push({x: item["date"], y: item["value"]})
-            }
-            // var li = document.createElement("li")
-            // li.innerHTML = JSON.stringify(item)
-            // dataList.appendChild(li)
-        })
-        new Chart('ctx', {
-            type: 'line',
-            data: {
-                datasets: [{
-                    data: myData
-                }],
-            },
-            options: {
+            // console.log()
+            // if (item["sensorID"] == 2){
+            // myData.push({x: item["date"], y: item["value"]})
+            // }
+            var li = document.createElement("li")
+            li.innerHTML = JSON.stringify(item)
+            dataList.appendChild(li)
+            })
+        // new Chart('ctx', {
+        //     type: 'line',
+        //     data: {
+        //         datasets: [{
+        //             data: myData
+        //         }],
+        //     },
+        //     options: {
                 
-                scales: {
-                    x: {
-                        min: "2023-06-17 10:00:00",
-                        type: 'time',
-                        time: {
-                          unit: 'day',
-                          displayFormats: {
-                            day: 'D MMM yyyy'
-                          }
-                        }
-                      }
-                }
-            }
-        });
+        //         scales: {
+        //             x: {
+        //                 min: "2023-06-17 10:00:00",
+        //                 type: 'time',
+        //                 time: {
+        //                   unit: 'day',
+        //                   displayFormats: {
+        //                     day: 'D MMM yyyy'
+        //                   }
+        //                 }
+        //               }
+        //         }
+        //     }
+        // });
     }
     xhr.open("GET", "/get_data");
     xhr.send();
