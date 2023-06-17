@@ -14,9 +14,9 @@ def hello_world():
 @app.get("/get_water_status")
 def get_water_status():
     if water_status:
-        return 1
+        return "1"
     else:
-        return 0
+        return "0"
 
 @app.post("/send_data")
 def recv_data():
