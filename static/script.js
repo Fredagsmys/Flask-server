@@ -57,7 +57,7 @@ function getData() {
                 
                 scales: {
                     x: {
-                        min: "2023-04-01 00:00:00",
+                        min: "2023-06-16 00:00:00",
                         type: 'time',
                         time: {
                           unit: 'day',
