@@ -24,7 +24,7 @@ function sendWaterCommand(){
             alert("Water command sent successfully");
         }
     }
-    xhr.open("POST", "/set_water_status");
+    xhr.open("GET", "/set_water_status");
     xhr.send("water");
 }
 
