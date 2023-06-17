@@ -27,49 +27,77 @@ function sendWaterCommand(){
     xhr.open("GET", "/set_water_status");
     xhr.send("water");
 }
+function GetCurDate(){
+    const dateObj = new Date();
 
+    let year = dateObj.getFullYear();
+
+    let month = dateObj.getMonth();
+    month = ('0' + (month + 1)).slice(-2);
+    // To make sure the month always has 2-character-format. For example, 1 => 01, 2 => 02
+
+    let date = dateObj.getDate();
+    date = ('0' + date).slice(-2);
+    // To make sure the date always has 2-character-format
+
+    let hour = dateObj.getHours();
+    hour = ('0' + hour).slice(-2);
+    // To make sure the hour always has 2-character-format
+
+    let minute = dateObj.getMinutes();
+    minute = ('0' + minute).slice(-2);
+    // To make sure the minute always has 2-character-format
+
+    let second = dateObj.getSeconds();
+    second = ('0' + second).slice(-2);
+    // To make sure the second always has 2-character-format
+
+    var time = `${year}-${month}-${date} ${hour}:${minute}:${second}`;
+    
+    return time;
+}
 
 function getData() {
     var xhr = new XMLHttpRequest();
     xhr.onload = () => {
-        
+        date = GetCurDate();
+        console.log(date);
         response = JSON.parse(xhr.responseText)
         console.log(response)
         dataList.innerHTML = ""
         var myData = [];
         response.forEach( (item,index) => {
-            // console.log()
-            // if (item["sensorID"] == 2){
-            // myData.push({x: item["date"], y: item["value"]})
-            // }
+            if (item["sensorID"] == 2){
+            myData.push({x: item["date"], y: item["value"]})
+            }
             var li = document.createElement("li")
             li.innerHTML = JSON.stringify(item)
             dataList.appendChild(li)
             })
             Array.from(dataList.children).reverse().forEach(element =>dataList.appendChild(element));
-        // new Chart('ctx', {
-        //     type: 'line',
-        //     data: {
-        //         datasets: [{
-        //             data: myData
-        //         }],
-        //     },
-        //     options: {
+        new Chart('ctx', {
+            type: 'line',
+            data: {
+                datasets: [{
+                    data: myData
+                }],
+            },
+            options: {
                 
-        //         scales: {
-        //             x: {
-        //                 min: "2023-06-17 10:00:00",
-        //                 type: 'time',
-        //                 time: {
-        //                   unit: 'day',
-        //                   displayFormats: {
-        //                     day: 'D MMM yyyy'
-        //                   }
-        //                 }
-        //               }
-        //         }
-        //     }
-        // });
+                scales: {
+                    x: {
+                        min: "2023-06-17 10:00:00",
+                        type: 'time',
+                        time: {
+                          unit: 'day',
+                          displayFormats: {
+                            day: 'D MMM yyyy'
+                          }
+                        }
+                      }
+                }
+            }
+        });
     }
     xhr.open("GET", "/get_data");
     xhr.send();
