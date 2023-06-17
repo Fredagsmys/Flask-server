@@ -11,7 +11,7 @@ water_status = "0"
 def hello_world():
     return render_template("index.html")
 
-@app.route("/get_water_status")
+@app.get("/get_water_status")
 def get_water_status():
     global water_status
     if water_status == "0":
