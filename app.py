@@ -5,10 +5,18 @@ from mysql.connector import Error
 import datetime
 
 app = Flask(__name__)
+water_status = False
 
 @app.route("/")
 def hello_world():
     return render_template("index.html")
+
+@app.get("/get_water_status")
+def get_water_status():
+    if water_status:
+        return 1
+    else:
+        return 0
 
 @app.post("/send_data")
 def recv_data():
