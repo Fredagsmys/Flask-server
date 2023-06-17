@@ -84,11 +84,11 @@ def get_data():
             cursor.execute("select * from data;")
             resultList = cursor.fetchall()
             responseList = []
-            print(resultList)
+            # print(resultList)
             for res in resultList:
                 date = res[1].strftime('%Y-%m-%d %H:%M:%S')
                 responseList.append({"value": res[2], "date":date , "sensorType": res[3], "sensorID": res[4]})
-            print(responseList)
+            # print(responseList)
             return json.dumps(responseList)
     except Error as e:
         print("Error while connecting to MySQL", e)
