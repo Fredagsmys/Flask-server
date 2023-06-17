@@ -31,7 +31,7 @@ def set_water_status():
 @app.route("/send_data")
 def recv_data():
     status = 0
-    
+    print(request.json)
     req = request.get_json()
     print(req)
     jsonmsg = json.loads(req)
