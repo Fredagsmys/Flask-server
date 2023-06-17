@@ -92,10 +92,10 @@ function getData() {
                         min: date,
                         type: 'time',
                         time: {
-                          unit: 'day',
-                          displayFormats: {
-                            day: 'D MMM yyyy'
-                          }
+                          unit: 'minute',
+                        //   displayFormats: {
+                        //     auto
+                        //   }
                         }
                       }
                 }
