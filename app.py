@@ -31,13 +31,11 @@ def set_water_status():
 @app.route("/send_data", methods = ['GET', 'POST'])
 def recv_data():
     if request.method == 'POST':
-        print(request.is_json)
+        
         status = 0
         print(request.json)
         req = request.get_json()
-        print(req)
         jsonmsg = json.loads(req)
-        print(jsonmsg)
         value = jsonmsg["value"]
         sensorType = jsonmsg["sensorType"]
         sensorID = jsonmsg["sensorID"]
