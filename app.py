@@ -13,6 +13,7 @@ def hello_world():
 
 @app.get("/get_water_status")
 def get_water_status():
+    global water_status
     if water_status == "0":
         return "0"
     else:
@@ -21,6 +22,7 @@ def get_water_status():
     
 @app.post("/set_water_status")
 def set_water_status():
+    global water_status
     water_status = "1"
     return "success"
 
