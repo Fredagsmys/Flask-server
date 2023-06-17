@@ -28,7 +28,10 @@ function sendWaterCommand(){
     xhr.send("water");
 }
 function GetCurDate(){
-    const dateObj = new Date();
+    var currDateObj = new Date();
+    var numberOfMlSeconds = currDateObj.getTime();
+    var addMlSeconds = 60 * 60 * 1000;
+    var dateObj = new Date(numberOfMlSeconds - addMlSeconds);
 
     let year = dateObj.getFullYear();
 
@@ -86,7 +89,7 @@ function getData() {
                 
                 scales: {
                     x: {
-                        min: "2023-06-17 10:00:00",
+                        min: date,
                         type: 'time',
                         time: {
                           unit: 'day',
