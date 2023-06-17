@@ -39,7 +39,7 @@ function getData() {
         var myData = [];
         response.forEach( (item,index) => {
             console.log()
-            if (item["sensorID"] == 9){
+            if (item["sensorID"] == 2){
             myData.push({x: item["date"], y: item["value"]})
             }
             // var li = document.createElement("li")
