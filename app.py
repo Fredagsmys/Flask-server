@@ -11,7 +11,7 @@ water_status = "0"
 def hello_world():
     return render_template("index.html")
 
-@app.get("/get_water_status")
+@app.route("/get_water_status")
 def get_water_status():
     global water_status
     if water_status == "0":
@@ -20,7 +20,7 @@ def get_water_status():
         water_status = "0"
         return "1"
     
-@app.post("/set_water_status")
+@app.route("/set_water_status")
 def set_water_status():
     global water_status
     water_status = "1"
@@ -28,7 +28,7 @@ def set_water_status():
 
 
 
-@app.post("/send_data")
+@app.route("/send_data")
 def recv_data():
     status = 0
     
