@@ -83,8 +83,8 @@ function sendData(event) {
     xhr.onload = () => {
         getData()
     }
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    const jsonmsg = `{"sensorID": ${id}, "sensorType": ${type}, "value": ${value}}`
+    xhr.setRequestHeader("Content-Type", "application/json");
+    const jsonmsg = `{\"sensorID\": ${id}, \"sensorType\": ${type}, \"value\": ${value}}`
     var sendMsg = JSON.stringify(jsonmsg);
     console.log(sendMsg);
     xhr.send(sendMsg);
